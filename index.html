@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소성가공 연구실 | Metal Forming Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2744;
+            --secondary: #2d4a7c;
+            --accent: #c9a227;
+            --accent-light: #e8d59a;
+            --text: #2c3e50;
+            --text-light: #5a6c7d;
+            --bg: #fafbfc;
+            --bg-warm: #f8f6f3;
+            --white: #ffffff;
+            --border: #e1e5eb;
+            --shadow: rgba(26, 39, 68, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #3d5a8c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-title-en {
+            font-family: 'Source Serif 4', serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.9;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Research Areas */
+        #research {
+            background: var(--white);
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.4s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+            border-color: transparent;
+        }
+
+        .research-card:hover::before {
+            height: 100%;
+        }
+
+        .research-icon {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: var(--white);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .research-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .research-card:hover .research-icon img {
+            transform: scale(1.05);
+        }
+
+        .research-icon.placeholder {
+            font-size: 2.5rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .research-card h4 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .research-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.75rem;
+            background: var(--white);
+            color: var(--secondary);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        /* Services */
+        #services {
+            background: var(--bg-warm);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 3rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 30px var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .service-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.6;
+        }
+
+        .service-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .service-list {
+            margin-top: 1rem;
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .service-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Publications */
+        #publications {
+            background: var(--white);
+        }
+
+        .pub-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pub-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .pub-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .pub-item:hover {
+            padding-left: 1rem;
+            background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+        }
+
+        .pub-title {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .pub-journal {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .pub-type {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Contact */
+        #contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+        }
+
+        #contact .section-label {
+            color: var(--accent-light);
+        }
+
+        #contact .section-title {
+            color: var(--white);
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .contact-text p:first-child {
+            font-weight: 500;
+            color: var(--accent-light);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-group select option {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1724;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer .logo {
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        #about {
+            background: var(--bg-warm);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-image {
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .profile-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .about-position {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .about-details {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .about-item {
+            display: flex;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-item:last-child {
+            border-bottom: none;
+        }
+
+        .about-label {
+            font-weight: 600;
+            color: var(--primary);
+            width: 80px;
+            flex-shrink: 0;
+        }
+
+        .about-career h4,
+        .about-interests h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-career ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .about-career li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .about-career li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .interest-tags span {
+            padding: 0.4rem 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .about-message {
+            font-style: italic;
+            color: var(--text-light);
+            padding: 1.5rem;
+            background: var(--white);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Resources Section */
+        #resources {
+            background: var(--bg-warm);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-category {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .resource-category:hover {
+            box-shadow: 0 10px 30px var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-category h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-list a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .resource-list a:hover {
+            color: var(--secondary);
+        }
+
+        .file-info {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Books Section */
+        #books {
+            background: var(--white);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            display: flex;
+            gap: 1.5rem;
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover {
+            box-shadow: 0 10px 30px var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .book-cover {
+            width: 120px;
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 0.7rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-badge.recommend {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .book-info h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .book-publisher {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .book-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .book-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .book-tags span {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--white);
+            color: var(--secondary);
+            border-radius: 3px;
+            border: 1px solid var(--border);
+        }
+
+        /* Q&A Section */
+        #qna {
+            background: var(--bg);
+        }
+
+        .qna-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+        }
+
+        .qna-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .qna-item {
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .qna-question {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .qna-question:hover {
+            background: var(--bg);
+        }
+
+        .q-badge, .a-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .q-badge {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .a-badge {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .qna-question h4 {
+            flex: 1;
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .qna-toggle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            transition: transform 0.3s ease;
+        }
+
+        .qna-item.active .qna-toggle {
+            transform: rotate(45deg);
+        }
+
+        .qna-answer {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+            padding-left: calc(1.5rem + 28px + 1rem);
+        }
+
+        .qna-item.active .qna-answer {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .qna-answer p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .qna-form-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .qna-form-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .qna-form-section > p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .qna-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .qna-form label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .qna-form input,
+        .qna-form select,
+        .qna-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .qna-form input:focus,
+        .qna-form select:focus,
+        .qna-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .qna-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Responsive adjustments for new sections */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                position: static;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .qna-container {
+                grid-template-columns: 1fr;
+            }
+
+            .qna-form-section {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .book-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .book-tags {
+                justify-content: center;
+            }
+
+            .qna-answer {
+                padding-left: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Metal<span>Forming</span>Lab</div>
+            <ul class="nav-links">
+                <li><a href="#about">소개</a></li>
+                <li><a href="#research">연구분야</a></li>
+                <li><a href="#services">자문/교육</a></li>
+                <li><a href="#publications">연구실적</a></li>
+                <li><a href="#resources">자료실</a></li>
+                <li><a href="#books">책소개</a></li>
+                <li><a href="#qna">Q&A</a></li>
+                <li><a href="#contact">연락처</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="메뉴">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Advanced Metal Forming Research</p>
+            <h1 class="hero-title">소성가공 연구실</h1>
+            <p class="hero-title-en">Plasticity & Sheet Metal Forming Laboratory</p>
+            <p class="hero-desc">
+                판재성형, 유한요소해석, 성형한계 예측에서 연성파괴 모델 개발까지<br>
+                소성가공 분야의 혁신적 연구와 산업 기술 자문을 수행합니다
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">기술 자문 문의</a>
+                <a href="#research" class="btn btn-secondary">연구분야 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 집주인 소개 섹션 -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">About</p>
+                <h2 class="section-title">집주인 소개</h2>
+                <p class="section-subtitle">소성가공 분야의 연구와 교육에 매진하고 있습니다</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="profile-placeholder">
+                        <!-- 프로필 이미지: <img src="images/profile.jpg" alt="프로필 사진"> -->
+                        👤
+                    </div>
+                </div>
+                <div class="about-info fade-in">
+                    <h3>홍길동 / Gil-Dong Hong</h3>
+                    <p class="about-position">OO대학교 기계공학과 교수</p>
+                    
+                    <div class="about-details">
+                        <div class="about-item">
+                            <span class="about-label">전공</span>
+                            <span>소성가공, 재료역학</span>
+                        </div>
+                        <div class="about-item">
+                            <span class="about-label">학위</span>
+                            <span>OO대학교 기계공학 박사 (2000)</span>
+                        </div>
+                        <div class="about-item">
+                            <span class="about-label">이메일</span>
+                            <span>professor@university.ac.kr</span>
+                        </div>
+                    </div>
+
+                    <div class="about-career">
+                        <h4>주요 경력</h4>
+                        <ul>
+                            <li>OO대학교 기계공학과 교수 (2005 - 현재)</li>
+                            <li>한국소성가공학회 이사 (2015 - 2020)</li>
+                            <li>OO연구소 선임연구원 (2000 - 2005)</li>
+                            <li>OO기업 기술자문위원 (2010 - 현재)</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-interests">
+                        <h4>연구 관심분야</h4>
+                        <div class="interest-tags">
+                            <span>판재성형</span>
+                            <span>유한요소해석</span>
+                            <span>소성역학</span>
+                            <span>연성파괴</span>
+                            <span>AI/머신러닝</span>
+                            <span>스마트제조</span>
+                        </div>
+                    </div>
+
+                    <p class="about-message">
+                        "소성가공 기술의 발전과 후학 양성을 위해 노력하고 있습니다. 
+                        산업 현장의 문제 해결과 학문적 연구의 조화를 추구합니다."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Research Areas</p>
+                <h2 class="section-title">주요 연구분야</h2>
+                <p class="section-subtitle">소성가공의 기초 이론부터 첨단 기술 개발까지 폭넓은 연구를 수행합니다</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/sheet-forming.jpg" alt="판재성형"> -->
+                        📐
+                    </div>
+                    <h3>판재성형</h3>
+                    <h4>Sheet Metal Forming</h4>
+                    <p>딥드로잉, 스탬핑, 하이드로포밍 등 다양한 판재성형 공정의 해석 및 최적화 연구를 수행합니다. 이어링 현상, 스프링백 예측 등 실제 산업 현장의 문제를 해결합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">Deep Drawing</span>
+                        <span class="tag">Springback</span>
+                        <span class="tag">Earing</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/fem-analysis.jpg" alt="유한요소해석"> -->
+                        💻
+                    </div>
+                    <h3>유한요소해석</h3>
+                    <h4>Finite Element Analysis</h4>
+                    <p>상용 소프트웨어 및 자체 개발 코드를 활용한 성형 공정 시뮬레이션을 수행합니다. 복잡한 재료 거동과 접촉 조건을 고려한 정밀 해석 기술을 보유하고 있습니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">ABAQUS</span>
+                        <span class="tag">LS-DYNA</span>
+                        <span class="tag">UMAT/VUMAT</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/forming-limit.jpg" alt="성형한계"> -->
+                        📊
+                    </div>
+                    <h3>성형한계</h3>
+                    <h4>Forming Limit Prediction</h4>
+                    <p>다양한 재료의 성형한계선도(FLD) 측정 및 예측 모델을 개발합니다. M-K 모델, FFLD 등 최신 이론을 적용하여 파단 예측 정확도를 향상시킵니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">FLC/FLD</span>
+                        <span class="tag">M-K Model</span>
+                        <span class="tag">Necking</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/plasticity-model.jpg" alt="소성항복식"> -->
+                        ⚙️
+                    </div>
+                    <h3>소성항복식 개발</h3>
+                    <h4>Plasticity Model Development</h4>
+                    <p>Hill48, Yld2000-2d, Yld2004-18p 등 이방성 항복함수의 파라미터 결정 및 신규 모델 개발 연구를 수행합니다. r값 및 응력 기반 최적화 기법을 적용합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">Hill48</span>
+                        <span class="tag">Yld2000-2d</span>
+                        <span class="tag">Anisotropy</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/ductile-fracture.jpg" alt="연성파괴"> -->
+                        🔬
+                    </div>
+                    <h3>연성파괴 모델 개발</h3>
+                    <h4>Ductile Fracture Modeling</h4>
+                    <p>Lou-Huh, DF2016 등 연성파괴 모델의 파라미터 결정 및 신규 모델 개발을 연구합니다. 응력삼축비와 로드각을 고려한 파괴 예측 기술을 개발합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">Lou-Huh</span>
+                        <span class="tag">Triaxiality</span>
+                        <span class="tag">Lode Angle</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/incremental-forming.jpg" alt="점진성형"> -->
+                        🛠️
+                    </div>
+                    <h3>점진성형 기술</h3>
+                    <h4>Incremental Sheet Forming</h4>
+                    <p>SPIF, TPIF 등 점진성형 공정의 성형성 향상 및 정밀도 개선 연구를 수행합니다. 툴패스 최적화, 두께 분포 예측 등 핵심 기술을 개발합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">SPIF</span>
+                        <span class="tag">TPIF</span>
+                        <span class="tag">Toolpath</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/dic-measurement.jpg" alt="DIC 측정"> -->
+                        📷
+                    </div>
+                    <h3>변형률 및 응력 측정기술</h3>
+                    <h4>Strain & Stress Measurement</h4>
+                    <p>DIC(Digital Image Correlation), 스트레인게이지, 영상처리 기술을 활용한 정밀 변형률 측정 및 응력 분석 연구를 수행합니다. 비접촉식 전계장 측정 기술을 통해 성형 중 재료 거동을 실시간으로 분석합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">DIC</span>
+                        <span class="tag">Strain Gauge</span>
+                        <span class="tag">Image Processing</span>
+                        <span class="tag">Full-field Measurement</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/ai-forming.jpg" alt="AI 소성가공"> -->
+                        🤖
+                    </div>
+                    <h3>AI 응용 소성가공</h3>
+                    <h4>AI-based Metal Forming</h4>
+                    <p>머신러닝과 딥러닝 기술을 활용하여 소성가공 공정의 품질 예측, 공정 최적화, 결함 검출 등의 문제를 해결합니다. 데이터 기반 스마트 제조 기술을 연구합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Process Optimization</span>
+                        <span class="tag">Defect Detection</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon placeholder">
+                        <!-- 이미지 삽입: <img src="images/smart-factory.jpg" alt="스마트팩토리"> -->
+                        🏭
+                    </div>
+                    <h3>IoT 기반 공장자동화</h3>
+                    <h4>IoT-based Factory Automation</h4>
+                    <p>IoT 센서 네트워크와 실시간 데이터 수집 시스템을 활용한 스마트 팩토리 구축 연구를 수행합니다. 공정 모니터링, 예지보전, 생산성 향상을 위한 자동화 솔루션을 개발합니다.</p>
+                    <div class="research-tags">
+                        <span class="tag">Smart Factory</span>
+                        <span class="tag">Real-time Monitoring</span>
+                        <span class="tag">Predictive Maintenance</span>
+                        <span class="tag">Industry 4.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Services</p>
+                <h2 class="section-title">기술 자문 및 교육</h2>
+                <p class="section-subtitle">산업 현장의 실질적인 문제 해결과 전문 인력 양성을 지원합니다</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-number">01</div>
+                    <div class="service-content">
+                        <h3>성형 공정 최적화 자문</h3>
+                        <p>판재성형 공정의 품질 향상 및 불량률 저감을 위한 기술 자문을 제공합니다.</p>
+                        <ul class="service-list">
+                            <li>스프링백 저감 및 보정 기술</li>
+                            <li>금형 설계 및 공정 변수 최적화</li>
+                            <li>성형 결함 원인 분석 및 대책 수립</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-number">02</div>
+                    <div class="service-content">
+                        <h3>재료 물성 평가</h3>
+                        <p>성형해석에 필요한 재료 물성 측정 및 구성방정식 파라미터 결정을 지원합니다.</p>
+                        <ul class="service-list">
+                            <li>이방성 파라미터 결정 (r값, 응력비)</li>
+                            <li>성형한계선도(FLD) 측정</li>
+                            <li>연성파괴 파라미터 결정</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-number">03</div>
+                    <div class="service-content">
+                        <h3>FEM 해석 교육</h3>
+                        <p>유한요소해석 소프트웨어 활용 및 이론에 대한 전문 교육을 제공합니다.</p>
+                        <ul class="service-list">
+                            <li>ABAQUS/LS-DYNA 기초 및 고급 과정</li>
+                            <li>사용자 서브루틴(UMAT/VUMAT) 개발</li>
+                            <li>성형해석 실무 적용 사례 교육</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-number">04</div>
+                    <div class="service-content">
+                        <h3>소성역학 이론 교육</h3>
+                        <p>소성가공의 기초가 되는 소성역학 이론에 대한 체계적인 교육을 제공합니다.</p>
+                        <ul class="service-list">
+                            <li>소성학 기초 및 항복 조건</li>
+                            <li>이방성 소성 이론</li>
+                            <li>연성파괴 및 성형한계 이론</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Publications</p>
+                <h2 class="section-title">연구 실적</h2>
+                <p class="section-subtitle">국내외 학술지에 게재된 주요 연구 성과입니다</p>
+            </div>
+            <div class="pub-list">
+                <h3 class="pub-year">2024</h3>
+                <div class="pub-item fade-in">
+                    <p class="pub-title">이방성 재료의 점진성형 시 두께 분포 예측을 위한 해석적 모델 개발</p>
+                    <p class="pub-authors">홍길동, 김철수, 이영희</p>
+                    <p class="pub-journal">한국소성가공학회지, Vol. 33, No. 2, pp. 85-94 <span class="pub-type">KCI</span></p>
+                </div>
+                <div class="pub-item fade-in">
+                    <p class="pub-title">Application of machine learning for springback prediction in U-bending of advanced high strength steels</p>
+                    <p class="pub-authors">G.D. Hong, C.S. Kim, Y.H. Lee</p>
+                    <p class="pub-journal">International Journal of Material Forming, Vol. 17, Article 28 <span class="pub-type">SCIE</span></p>
+                </div>
+
+                <h3 class="pub-year">2023</h3>
+                <div class="pub-item fade-in">
+                    <p class="pub-title">Modified Lou-Huh ductile fracture criterion considering stress triaxiality and Lode parameter dependence</p>
+                    <p class="pub-authors">G.D. Hong, C.S. Kim</p>
+                    <p class="pub-journal">Journal of Materials Processing Technology, Vol. 312, 117845 <span class="pub-type">SCIE</span></p>
+                </div>
+                <div class="pub-item fade-in">
+                    <p class="pub-title">고강도강판의 Yld2000-2d 항복함수 파라미터 결정을 위한 역해석 기법</p>
+                    <p class="pub-authors">김철수, 홍길동, 박민수</p>
+                    <p class="pub-journal">대한기계학회논문집 A, Vol. 47, No. 3, pp. 221-230 <span class="pub-type">KCI</span></p>
+                </div>
+
+                <h3 class="pub-year">2022</h3>
+                <div class="pub-item fade-in">
+                    <p class="pub-title">Forming limit prediction of aluminum alloy sheets using M-K model with temperature-dependent parameters</p>
+                    <p class="pub-authors">G.D. Hong, Y.H. Lee, M.S. Park</p>
+                    <p class="pub-journal">International Journal of Mechanical Sciences, Vol. 227, 107412 <span class="pub-type">SCIE</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 자료실 섹션 -->
+    <section id="resources">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Resources</p>
+                <h2 class="section-title">자료실</h2>
+                <p class="section-subtitle">연구 및 교육에 활용 가능한 자료를 공유합니다</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-category fade-in">
+                    <div class="resource-icon">📚</div>
+                    <h3>강의자료</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#">소성역학 기초 (PDF)</a>
+                            <span class="file-info">2.5 MB · 2024.01</span>
+                        </li>
+                        <li>
+                            <a href="#">유한요소법 입문 (PDF)</a>
+                            <span class="file-info">3.2 MB · 2024.01</span>
+                        </li>
+                        <li>
+                            <a href="#">판재성형 해석 실습 (PDF)</a>
+                            <span class="file-info">4.1 MB · 2023.09</span>
+                        </li>
+                        <li>
+                            <a href="#">항복함수 이론 (PDF)</a>
+                            <span class="file-info">1.8 MB · 2023.06</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-category fade-in">
+                    <div class="resource-icon">💾</div>
+                    <h3>프로그램/코드</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#">Hill48 파라미터 계산기 (Excel)</a>
+                            <span class="file-info">156 KB · 2024.02</span>
+                        </li>
+                        <li>
+                            <a href="#">FLD 예측 프로그램 (Python)</a>
+                            <span class="file-info">45 KB · 2024.01</span>
+                        </li>
+                        <li>
+                            <a href="#">UMAT 예제 코드 (Fortran)</a>
+                            <span class="file-info">28 KB · 2023.11</span>
+                        </li>
+                        <li>
+                            <a href="#">r값 측정 데이터 처리 (MATLAB)</a>
+                            <span class="file-info">32 KB · 2023.08</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-category fade-in">
+                    <div class="resource-icon">🎬</div>
+                    <h3>동영상 강의</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#">ABAQUS 기초 튜토리얼</a>
+                            <span class="file-info">45분 · YouTube</span>
+                        </li>
+                        <li>
+                            <a href="#">딥드로잉 시뮬레이션 실습</a>
+                            <span class="file-info">60분 · YouTube</span>
+                        </li>
+                        <li>
+                            <a href="#">DIC 측정 방법 소개</a>
+                            <span class="file-info">30분 · YouTube</span>
+                        </li>
+                        <li>
+                            <a href="#">스프링백 해석 기법</a>
+                            <span class="file-info">40분 · YouTube</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-category fade-in">
+                    <div class="resource-icon">📋</div>
+                    <h3>기술문서</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#">성형한계선도 측정 가이드 (PDF)</a>
+                            <span class="file-info">1.2 MB · 2024.01</span>
+                        </li>
+                        <li>
+                            <a href="#">이방성 시험 표준절차 (PDF)</a>
+                            <span class="file-info">0.8 MB · 2023.12</span>
+                        </li>
+                        <li>
+                            <a href="#">연성파괴 시험법 (PDF)</a>
+                            <span class="file-info">1.5 MB · 2023.10</span>
+                        </li>
+                        <li>
+                            <a href="#">점진성형 공정 매뉴얼 (PDF)</a>
+                            <span class="file-info">2.1 MB · 2023.07</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 책소개 섹션 -->
+    <section id="books">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Books</p>
+                <h2 class="section-title">책 소개</h2>
+                <p class="section-subtitle">소성가공 분야의 추천 도서 및 저서를 소개합니다</p>
+            </div>
+            <div class="books-grid">
+                <div class="book-card fade-in">
+                    <div class="book-cover">
+                        <!-- 책 표지: <img src="images/book1.jpg" alt="소성역학"> -->
+                        📘
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge">저서</span>
+                        <h3>소성역학의 기초와 응용</h3>
+                        <p class="book-author">홍길동 저</p>
+                        <p class="book-publisher">OO출판사, 2022</p>
+                        <p class="book-desc">소성역학의 기본 이론부터 실제 응용까지 체계적으로 다룬 교재입니다. 대학원 수업 및 현장 엔지니어를 위한 참고서로 활용됩니다.</p>
+                        <div class="book-tags">
+                            <span>소성역학</span>
+                            <span>항복조건</span>
+                            <span>구성방정식</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-card fade-in">
+                    <div class="book-cover">
+                        <!-- 책 표지: <img src="images/book2.jpg" alt="판재성형"> -->
+                        📗
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge">저서</span>
+                        <h3>판재성형 해석의 이론과 실제</h3>
+                        <p class="book-author">홍길동, 김철수 공저</p>
+                        <p class="book-publisher">OO출판사, 2020</p>
+                        <p class="book-desc">판재성형 공정의 유한요소해석 방법을 상세히 설명합니다. ABAQUS, LS-DYNA 예제를 포함하고 있습니다.</p>
+                        <div class="book-tags">
+                            <span>판재성형</span>
+                            <span>FEM</span>
+                            <span>시뮬레이션</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-card fade-in">
+                    <div class="book-cover">
+                        <!-- 책 표지: <img src="images/book3.jpg" alt="추천도서"> -->
+                        📙
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge recommend">추천</span>
+                        <h3>Metal Forming: Mechanics and Metallurgy</h3>
+                        <p class="book-author">W.F. Hosford, R.M. Caddell</p>
+                        <p class="book-publisher">Cambridge University Press, 4th Ed.</p>
+                        <p class="book-desc">소성가공 분야의 대표적인 교과서입니다. 기초 역학부터 다양한 성형 공정까지 폭넓게 다룹니다.</p>
+                        <div class="book-tags">
+                            <span>교과서</span>
+                            <span>영문</span>
+                            <span>필독서</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-card fade-in">
+                    <div class="book-cover">
+                        <!-- 책 표지: <img src="images/book4.jpg" alt="추천도서"> -->
+                        📕
+                    </div>
+                    <div class="book-info">
+                        <span class="book-badge recommend">추천</span>
+                        <h3>Sheet Metal Forming Fundamentals</h3>
+                        <p class="book-author">T. Altan, A. Tekkaya (Eds.)</p>
+                        <p class="book-publisher">ASM International, 2012</p>
+                        <p class="book-desc">판재성형의 기초와 응용을 다룬 실무 지향 도서입니다. 산업 현장 사례가 풍부합니다.</p>
+                        <div class="book-tags">
+                            <span>판재성형</span>
+                            <span>실무</span>
+                            <span>영문</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A 섹션 -->
+    <section id="qna">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Q&A</p>
+                <h2 class="section-title">문의 & 답변</h2>
+                <p class="section-subtitle">자주 묻는 질문과 답변을 확인하세요</p>
+            </div>
+            
+            <div class="qna-container">
+                <div class="qna-list">
+                    <div class="qna-item fade-in">
+                        <div class="qna-question">
+                            <span class="q-badge">Q</span>
+                            <h4>기술 자문은 어떻게 신청하나요?</h4>
+                            <span class="qna-toggle">+</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-badge">A</span>
+                            <p>하단의 연락처 양식을 통해 문의하시거나, 이메일(metalforming@university.ac.kr)로 직접 연락 주시면 됩니다. 자문 내용, 일정, 비용 등은 협의를 통해 결정됩니다. 보통 1-2일 내에 답변 드립니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item fade-in">
+                        <div class="qna-question">
+                            <span class="q-badge">Q</span>
+                            <h4>교육 프로그램 일정은 어떻게 되나요?</h4>
+                            <span class="qna-toggle">+</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-badge">A</span>
+                            <p>정규 교육 프로그램은 매년 상반기(3-4월)와 하반기(9-10월)에 진행됩니다. 기업 맞춤형 교육은 별도 일정 협의가 가능합니다. 교육 내용과 수준은 요청에 따라 조정할 수 있습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item fade-in">
+                        <div class="qna-question">
+                            <span class="q-badge">Q</span>
+                            <h4>공동 연구는 어떤 형태로 진행되나요?</h4>
+                            <span class="qna-toggle">+</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-badge">A</span>
+                            <p>산학협력, 정부과제 공동연구, 위탁연구 등 다양한 형태로 진행 가능합니다. 연구 주제와 범위에 따라 협약 내용이 달라지며, 초기 미팅을 통해 구체적인 사항을 논의합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item fade-in">
+                        <div class="qna-question">
+                            <span class="q-badge">Q</span>
+                            <h4>자료실의 자료는 무료로 사용 가능한가요?</h4>
+                            <span class="qna-toggle">+</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-badge">A</span>
+                            <p>대부분의 자료는 교육 및 연구 목적으로 무료 사용 가능합니다. 단, 상업적 이용이나 재배포는 사전 허가가 필요합니다. 출처를 명시해 주시면 감사하겠습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item fade-in">
+                        <div class="qna-question">
+                            <span class="q-badge">Q</span>
+                            <h4>대학원 진학 상담도 가능한가요?</h4>
+                            <span class="qna-toggle">+</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-badge">A</span>
+                            <p>네, 소성가공 분야 대학원 진학에 관심 있는 분들의 상담을 환영합니다. 연구실 소개, 연구 주제, 진학 절차 등에 대해 안내해 드립니다. 이메일로 먼저 연락 주시면 상담 일정을 잡을 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qna-form-section fade-in">
+                    <h3>새로운 질문하기</h3>
+                    <p>원하는 답변을 찾지 못하셨나요? 직접 질문을 남겨주세요.</p>
+                    <form id="qnaForm" class="qna-form">
+                        <div class="form-group">
+                            <label for="qna-name">이름 *</label>
+                            <input type="text" id="qna-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="qna-email">이메일 *</label>
+                            <input type="email" id="qna-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="qna-category">질문 분야</label>
+                            <select id="qna-category" name="category">
+                                <option value="general">일반 문의</option>
+                                <option value="consulting">기술 자문</option>
+                                <option value="education">교육 프로그램</option>
+                                <option value="research">공동 연구</option>
+                                <option value="resources">자료실</option>
+                                <option value="other">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qna-question">질문 내용 *</label>
+                            <textarea id="qna-question" name="question" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">질문 등록</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Contact</p>
+                <h2 class="section-title">연락처</h2>
+                <p class="section-subtitle">기술 자문, 교육, 공동 연구에 관한 문의를 환영합니다</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>연구실 정보</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <p>주소</p>
+                            <p>서울특별시 OO구 OO로 123<br>OO대학교 기계공학관 000호</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <p>이메일</p>
+                            <p>metalforming@university.ac.kr</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <p>전화</p>
+                            <p>02-000-0000</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-text">
+                            <p>상담 가능 시간</p>
+                            <p>평일 09:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">성함 *</label>
+                                <input type="text" id="name" name="name" placeholder="홍길동" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="affiliation">소속</label>
+                                <input type="text" id="affiliation" name="affiliation" placeholder="OO기업 / OO대학교">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">이메일 *</label>
+                                <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">연락처</label>
+                                <input type="tel" id="phone" name="phone" placeholder="010-0000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry">문의 유형 *</label>
+                            <select id="inquiry" name="inquiry" required>
+                                <option value="">선택해주세요</option>
+                                <option value="consulting">기술 자문</option>
+                                <option value="education">교육 프로그램</option>
+                                <option value="collaboration">공동 연구</option>
+                                <option value="other">기타 문의</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">문의 내용 *</label>
+                            <textarea id="message" name="message" placeholder="문의하실 내용을 자세히 적어주세요" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">문의하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">Metal<span>Forming</span>Lab</div>
+        <p>© 2024 소성가공 연구실. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('문의가 접수되었습니다. 빠른 시일 내에 답변 드리겠습니다.');
+            this.reset();
+        });
+
+        // Q&A Form submission
+        document.getElementById('qnaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('질문이 등록되었습니다. 확인 후 답변 드리겠습니다.');
+            this.reset();
+        });
+
+        // Q&A Toggle
+        document.querySelectorAll('.qna-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
